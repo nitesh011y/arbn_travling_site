@@ -1,0 +1,57 @@
+<% layout('layout/boilerplat') %>
+
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+            <!-- Image Section -->
+            <% if (listing.image && listing.image.url) { %>
+              <img src="<%= listing.image.url %>" alt="listing_img" class="card-img-top"
+                style="height: 400px; object-fit: cover;">
+              <% } else { %>
+                <img src="/images/default.jpg" alt="default_img" class="card-img-top"
+                  style="height: 400px; object-fit: cover;">
+                <% } %>
+
+                  <div class="card-body">
+                    <!-- Title -->
+                    <h1 class="card-title text-center mb-4 fw-bold text-primary">
+                      <%= listing.title %>
+                    </h1>
+
+                    <!-- Details Section -->
+                    <ul class="list-group list-group-flush mb-4">
+                      <li class="list-group-item"><strong>Description:</strong>
+                        <%= listing.description %>
+                      </li>
+                      <li class="list-group-item"><strong>Price:</strong>
+                        <span class="text-success fw-semibold">&#8377;<%= listing.price.toLocaleString("en-IN") %>
+                            </span>
+                      </li>
+                      <li class="list-group-item"><strong>Location:</strong>
+                        <%= listing.location %>
+                      </li>
+                      <li class="list-group-item"><strong>Country:</strong>
+                        <%= listing.country %>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Footer Buttons -->
+                  <div class="card-footer bg-light text-center py-3">
+                    <a href="/listings/<%= listing._id %>/edit" class="btn btn-primary btn-lg me-2">
+                      <i class="bi bi-pencil-square"></i> Edit Listing
+                    </a>
+
+                    <form method="post" action="/listings/<%= listing._id %>?_method=DELETE" class="d-inline">
+                      <button type="submit" class="btn btn-danger btn-lg">
+                        <i class="bi bi-trash"></i> Delete
+                      </button>
+                    </form>
+                  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>

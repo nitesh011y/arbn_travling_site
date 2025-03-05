@@ -1,0 +1,48 @@
+<% layout('layout/boilerplat') %>
+
+  <body>
+
+    <div class="row">
+      <div class="col-8 offset-2">
+        <form method="post" action="/listings">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input id="title" name="title" placeholder="Enter the title" type="text" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="description" placeholder="Enter description"
+              class="form-control"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input id="image" name="image" placeholder="Enter the image URL" type="text" class="form-control">
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="price" class="form-label">Price</label>
+              <input id="price" name="price" placeholder="1200" type="number" class="form-control">
+            </div>
+
+            <div class="mb-3 col-8">
+              <label for="countryname" class="form-label">Country</label>
+              <input id="countryname" name="countryname" placeholder="Enter the country" type="text"
+                class="form-control">
+            </div>
+
+          </div>
+
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input id="location" name="location" placeholder="Enter the location" type="text" class="form-control">
+          </div>
+
+          <button type="submit" class="btn btn-dark add-btn   ">Add</button>
+        </form>
+      </div>
+
+    </div>
+  </body>

@@ -1,0 +1,53 @@
+<% layout('layout/boilerplat') %>
+
+  <body>
+    <div class="container mt-5">
+      <!-- Page Title -->
+      <h1 class="text-center mb-4 fw-bold">Explore Listings</h1>
+
+      <!-- Create New Listing Button -->
+      <div class="text-center mb-4">
+        <a href="/listings/new" class="btn btn-success btn-lg">
+          <i class="bi bi-plus-lg"></i> Create New Listing
+        </a>
+      </div>
+
+      <!-- Listings Grid -->
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+        <% for (let listings of all_listings) { %>
+          <div class="col">
+            <a href="/listings/<%= listings.id %>" class="text-decoration-none text-dark">
+              <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+                <!-- Listing Image -->
+                <% if (listings.image && listings.image.url) { %>
+                  <img src="<%= listings.image.url %>" class="card-img-top" alt="listing_img"
+                    style="height: 15rem; object-fit: cover;">
+                  <% } else { %>
+                    <img src="/images/default.jpg" class="card-img-top" alt="default_img"
+                      style="height: 15rem; object-fit: cover;">
+                    <% } %>
+
+                      <!-- Card Content -->
+                      <div class="card-body">
+                        <h5 class="card-title fw-semibold">
+                          <%= listings.title %>
+                        </h5>
+                        <p class="card-text text-muted mb-2">
+                          &#8377;<%= listings.price.toLocaleString("en-IN") %>/night
+                        </p>
+                        <p class="small text-truncate">
+                          <%= listings.description || "No description available." %>
+                        </p>
+                      </div>
+
+                      <!-- Card Footer -->
+                      <div class="card-footer bg-white border-0 text-center py-2">
+                        <span class="text-primary fw-bold">View Details</span>
+                      </div>
+              </div>
+            </a>
+          </div>
+          <% } %>
+      </div>
+    </div>
+  </body>
